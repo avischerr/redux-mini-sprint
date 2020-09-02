@@ -31,7 +31,7 @@ Action objects are provided to all reducers so that they can all be handled as n
 - _What do you expect to see when you log `action.type` inside `messagesReducer`?_
 - _How about `action.payload`?_
 
-- [ ] Make your predictions then uncomment the `console.log` statement to find out. If errors prevent you from viewing the logs, comment out the in complete reducers first.
+- [ ] Make your predictions then uncomment the `console.log` statement to find out.
 
 - [ ] Finish writing the `usersReducer` so that when `ADD_MESSAGE` action is dispatched, if a new user is writing a message, they willb be added to the user list.
 
@@ -45,7 +45,7 @@ Action objects are provided to all reducers so that they can all be handled as n
 
 - [ ] Add the `messagesReducer` with property name `messages`, `usersReducer` with property name `users`, and the `chatRoomReducer` with property name `chatList` to the rootReducer. Notice that the function `combineReducers` is imported from the `redux` library.
 
-The properties of the object argument inside this function directly reflect the properties maintained in your store (an object that holds the somplete state of our application). At this point, we still have not provided any data to our store or even created our actual store. We have only set up our Redux flow to provide data to the store.
+The properties of the object argument inside this function directly reflect the properties maintained in your store (an object that holds the complete state of our application). At this point, we still have not provided any data to our store or even created our actual store. We have only set up our Redux flow to provide data to the store.
 
 ## Store
 
@@ -56,7 +56,7 @@ Log the statement,
 
 ```javascript
 console.log(
-  'Current State before dispatching actions with action creator >>>',
+  "Current State before dispatching actions with action creator >>>",
   store.getState()
 );
 ```
@@ -68,19 +68,37 @@ uncomment the following function (then individually uncomment the remaining func
 ```javascript
 store.dispatch(
   addNewMessageActionCreator({
-    userName: 'Lauren',
-    text: 'Where should we go out to eat?'
+    userName: "Lauren",
+    text: "Where should we go out to eat?",
   })
 );
 ```
 
 Take note of the store's contents after dispatching this action.
-Follow the addition instructions in the comments to see what happens when we do not handle an action type inside of the reducers.
+Follow the additional instructions in the comments to see what happens when we do not handle an action type inside of the reducers.
 
-Continue to build out the store by dispatching at least 5 additional action creators from both the file as well as the browser's console. See additional instructions in the file for dispatching actions from the browser.
+Continue to build out the store by dispatching at least 5 additional action creators from both the file as well as the browser's console.
+
+To add items to the store in the browser, write the statement below in the brower's console:
+
+```javascript
+let store = window.__store;
+```
+
+then dispatch your action creators in the console as an argument inside dispatch like so:
+
+```javascript
+store.dispatch({
+  type: "ADD_USER",
+  payload: {
+    userName: "Lauren",
+    text: "What's the best restaurant in this neighborhood?",
+  },
+});
+```
 
 ### React with Redux
 
-This concludes main content for this mini sprint. Explore the `/src/App.js` and `/src/index.js` files to get a sense of how React and Redux interact with one another.
+This concludes the main content for the mini sprint. Explore the `/src/App.js` and `/src/index.js` files to get a sense of how React and Redux interact with one another.
 
 Take particular note of the `<Provider />` inside `index.js` as well as the `mapStateToProps` and connect functions in `App.js`.
